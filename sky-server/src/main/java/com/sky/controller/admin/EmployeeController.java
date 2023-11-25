@@ -92,6 +92,7 @@ public class EmployeeController {
 
     /**
      * 员工分页查询
+     *
      * @param employeePageQueryDTO
      * @return
      */
@@ -101,6 +102,21 @@ public class EmployeeController {
         log.info("员工分页查询,参数为:{}", employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 设置账号状态(启用/禁用)
+     *
+     * @param status
+     * @param id
+     * @return
+     */
+    @ApiOperation("设置账号状态")
+    @PostMapping("status/{status}")
+    public Result setUpStatus(@PathVariable Integer status, Long id) {
+        log.info("启用/禁用账号:{}，{}",id,status);
+        employeeService.setUpStatus(status,id);
+        return Result.success();
     }
 
 }
