@@ -116,4 +116,14 @@ public class CategoryServiceImpl implements CategoryService {
         category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapper.update(category);
     }
+
+    /**
+     * 根据类型查询
+     * @param type
+     */
+    public List<Category> getByType(Integer type) {
+        List<Category> list = categoryMapper.getByType(type);
+        return list;
+    }
+
 }
